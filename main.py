@@ -25,8 +25,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
 
-    if (message.author
-            == client.user) or (not message.content.startswith('!')):
+    if (message.author == client.user):
         return
 
     mention = f'<@!{client.user.id}>'
