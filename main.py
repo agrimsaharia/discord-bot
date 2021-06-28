@@ -55,7 +55,7 @@ async def on_message(message):
         else:
             await channel.send(
                 'These folks are online: ' + ', '.join(online_members) +
-                                            "\nAnd of course there is me for you, forever!")
+                "\nAnd of course there is me for you, forever!")
 
     # get dad_joke from api file and reply based on the feedback given
     elif msg.startswith('ami dad joke'):
@@ -96,14 +96,6 @@ async def on_message(message):
             )
         else:
             await channel.send(api.get_evil_insult())
-
-    # # get rid of the bot
-    # elif msg.startswith('bye pappu'):
-    #     await channel.send(random.choice(goodbyes_italian))
-    #     def check(m):
-    #       return m.author != client.user and m.channel == channel and m.content.startswith('aaja pappu')
-    #     await client.wait_for('message', check=check)
-    #     await channel.send('bachna ae haseeno, lo mai aa gaya...!')
 
 
 keep_alive()
