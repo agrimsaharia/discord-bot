@@ -54,7 +54,7 @@ async def on_message(message):
             await channel.send('No one\'s here i suppose')
         else:
             await channel.send(
-                'These folks are online: ', ', '.join(online_members) +
+                'These folks are online: ' + ', '.join(online_members) +
                                             "\nAnd of course there is me for you, forever!")
 
     # get dad_joke from api file and reply based on the feedback given
