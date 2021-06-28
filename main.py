@@ -72,11 +72,11 @@ async def on_message(message):
         try:
             reply = await client.wait_for('message', timeout=10.0, check=check)
             if reply.content == '1':
+                await channel.send("Thanks dude!")
+            elif reply.content == '2':
                 await channel.send(
                     f"I'll get better, thanks for responding {reply.author.name}"
                 )
-            elif reply.content == '2':
-                await channel.send("Thanks dude!")
         except asyncio.TimeoutError:
             await channel.send("No one is responding? I feel so lonely now")
 
