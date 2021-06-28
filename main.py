@@ -5,11 +5,12 @@ import time
 import my_apis as api
 from alive import keep_alive
 
-intro_message = 'Hey guys! I am your friend Ami and i am designed to make your day better. Here are somethings I can do ...'
+intro_message = 'Hey guys! I am your friend Ami and i am designed to make your day better. Here are somethings I can ' \
+                'do ... '
 
 feedback = ['Good --> 1', 'Bad --> 2']
 
-goodbyes_italian = ['See ya later, alligator!', 'Ciao! Ciao!', 'Bye Guys!']
+goodbyes = ['See ya later, alligator!', 'Ciao! Ciao!', 'Bye Guys!']
 
 intents = discord.Intents.default()
 intents.members = True
@@ -24,8 +25,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-
-    if (message.author == client.user):
+    if message.author == client.user:
         return
 
     mention = f'<@!{client.user.id}>'
@@ -51,11 +51,11 @@ async def on_message(message):
                 online_members.append(member.display_name)
 
         if len(online_members) == 0:
-            await channel.send('')  #TODO:add a message
+            await channel.send('No one\'s here i suppose')
         else:
             await channel.send(
                 'These folks are online: ', ', '.join(online_members) +
-                "\nAnd of course there is me for you, forever!")
+                                            "\nAnd of course there is me for you, forever!")
 
     # get dad_joke from api file and reply based on the feedback given
     elif msg.startswith('ami dad joke'):
@@ -81,9 +81,7 @@ async def on_message(message):
             await channel.send("No one is responding? I feel so lonely now")
 
     # get yo_momma_joke
-    elif msg.startswith(f'{mention} yo momma') or msg.startswith(
-            'ami yo momma') or msg.startswith(f'{mention}yo momma') or (
-                msg.startswith('yo momma') and (client.user in mentions)):
+    elif msg.startswith(f'{mention} yo momma') or msg.startswith('ami yo momma'):
         await channel.send(message.author.mention + ' ' +
                            api.get_yo_momma_joke())
 
