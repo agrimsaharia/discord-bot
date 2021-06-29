@@ -3,7 +3,6 @@ import asyncio
 import discord
 import time
 import my_apis as api
-from alive import keep_alive
 
 intro_message = 'Hey guys! I am your friend Ami and i am designed to make your day better. Here are somethings I can ' \
                 'do ... '
@@ -97,6 +96,4 @@ async def on_message(message):
         else:
             await channel.send(api.get_evil_insult())
 
-
-keep_alive()
 client.run(os.getenv('TOKEN'))
